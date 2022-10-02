@@ -1,7 +1,7 @@
 {
-  "name": "home",
+  "name": "contact",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/home",
+  "sourceRoot": "apps/contact",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/home",
-        "outputPath": "dist/apps/home"
+        "root": "apps/contact",
+        "outputPath": "dist/apps/contact"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/home"
+          "outputPath": "apps/contact"
         },
         "production": {}
       }
@@ -23,17 +23,17 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "home:build",
+        "buildTarget": "contact:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "home:build:development",
+          "buildTarget": "contact:build:development",
           "dev": true,
-          "proxyConfig": "apps/home/proxy.conf.json"
+          "port": 4201
         },
         "production": {
-          "buildTarget": "home:build:production",
+          "buildTarget": "contact:build:production",
           "dev": false
         }
       }
@@ -41,14 +41,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "home:build:production"
+        "buildTarget": "contact:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/home"],
+      "outputs": ["coverage/apps/contact"],
       "options": {
-        "jestConfig": "apps/home/jest.config.ts",
+        "jestConfig": "apps/contact/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -56,7 +56,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/home/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/contact/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

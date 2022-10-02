@@ -2,6 +2,52 @@
 
 # MfeProxy
 
+
+## Architecture
+
+- There are three apps present in this project - home, contact and checkout
+- This represents MFE with MPAs
+
+
+## How it works
+
+1. First we will set each app to run on a separate port during development. For this we will need to update `project.json` file of each app `targets.serve.configurations.development.port`
+2. In the each of the apps, we have separate `proxy.conf.json` file. In order to use this proxy conf file, update `project.json` file to target correct proxy conf files
+3. Inside `project.json` file for any app, update `targets.serve.configurations.development.proxyConfig` to `apps/home/proxy.conf.json`
+  [Nx Docs Proxy Config](https://nx.dev/packages/next/executors/server#proxyconfig)
+4. We will treat home as the base page and contact & checkout as other navigated pages
+5. To differentiate the static assets of each of the apps, we will update both the navigated apps static asset folder
+6. Add `assetPrefix: '/checkout-assets'` line to `next.config.js` file for checkout and `assetPrefix: '/contact-assets'` line to `next.config.js` file for contact app respectively
+7. Next we will update the `proxy.conf.json` file for each of the navigated app
+
+```json
+{
+  "/contact-assets": {
+    "target": "http://localhost:4201",
+    "pathRewrite": {
+      "^/contact-assets/_next": "/_next"
+    },
+    "secure": false
+  }
+}
+```
+
+```json
+{
+  "/checkout-assets": {
+    "target": "http://localhost:4202",
+    "pathRewrite": {
+      "^/checkout-assets/_next": "/_next"
+    },
+    "secure": false
+  }
+}
+
+```
+- Now we will update the `pacakge.json` file to run all the apps in parallel. Add `"serve:all": "nx run-many --target=serve"` to the script section
+- Open terminal and run `npm run serve:all` to see working MFE with MPAs approach
+
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>

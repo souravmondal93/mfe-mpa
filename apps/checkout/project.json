@@ -1,7 +1,7 @@
 {
-  "name": "home",
+  "name": "checkout",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/home",
+  "sourceRoot": "apps/checkout",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/home",
-        "outputPath": "dist/apps/home"
+        "root": "apps/checkout",
+        "outputPath": "dist/apps/checkout"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/home"
+          "outputPath": "apps/checkout"
         },
         "production": {}
       }
@@ -23,17 +23,18 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "home:build",
+        "buildTarget": "checkout:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "home:build:development",
+          "buildTarget": "checkout:build:development",
           "dev": true,
-          "proxyConfig": "apps/home/proxy.conf.json"
+          "port": 4202,
+          "proxyConfig": "apps/checkout/proxy.conf.json"
         },
         "production": {
-          "buildTarget": "home:build:production",
+          "buildTarget": "checkout:build:production",
           "dev": false
         }
       }
@@ -41,14 +42,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "home:build:production"
+        "buildTarget": "checkout:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/home"],
+      "outputs": ["coverage/apps/checkout"],
       "options": {
-        "jestConfig": "apps/home/jest.config.ts",
+        "jestConfig": "apps/checkout/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -56,7 +57,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/home/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/checkout/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

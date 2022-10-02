@@ -1,0 +1,14 @@
+{
+  "/contact": {
+    "target": "http://localhost:4201",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/checkout": {
+    "target": "http://localhost:4202",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

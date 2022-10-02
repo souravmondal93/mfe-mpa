@@ -1,0 +1,9 @@
+{
+  "/checkout-assets": {
+    "target": "http://localhost:4202",
+    "pathRewrite": {
+      "^/checkout-assets/_next": "/_next"
+    },
+    "secure": false
+  }
+}

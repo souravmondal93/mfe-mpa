@@ -1,0 +1,9 @@
+{
+  "/contact-assets": {
+    "target": "http://localhost:4201",
+    "pathRewrite": {
+      "^/contact-assets/_next": "/_next"
+    },
+    "secure": false
+  }
+}

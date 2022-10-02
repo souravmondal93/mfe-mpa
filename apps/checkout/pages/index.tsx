@@ -18,7 +18,7 @@ export function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome Home 👋
+              Welcome checkout 👋
             </h1>
           </div>
 
@@ -41,8 +41,6 @@ export function Index() {
                 <span>You&apos;re up and running</span>
               </h2>
               <a href="#commands"> What&apos;s next? </a>
-              <a href="http://localhost:4200/contact"> Contact </a>
-              <a href="/checkout"> Checkout </a>
             </div>
             <div className="logo-container">
               <svg
